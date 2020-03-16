@@ -22,10 +22,23 @@ def mosaic(src, ratio=0.01):
                        interpolation=cv2.INTER_NEAREST)
     return cv2.resize(small, src.shape[:2][::-1], interpolation=cv2.INTER_NEAREST)
 
+
+#入力解像度で縮小率を決定
+def scale_down_rate():
+    x=max(img.shape)
+    d=len(str(max(img.shape)))
+    if d>2:
+        return 1/10**(d-2)
+    else:
+        return 1
+
+
 # テスト用の表示
-def testshow(img):
+def test_show(img):
     cv2.imshow('test', img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-testshow(mosaic(img))
+r=scale_down_rate()
+print(r)
+test_show(mosaic(img, r))
