@@ -16,11 +16,10 @@ img = cv2.imread(args.path)
 
 
 # モザイク化する
-# todo 縮小後が二桁にあるぐらいにする
 def mosaic(src, ratio=0.01):
-    small = cv2.resize(src, None, fx=ratio, fy=ratio,
+    return small = cv2.resize(src, None, fx=ratio, fy=ratio,
                        interpolation=cv2.INTER_NEAREST)
-    return cv2.resize(small, src.shape[:2][::-1], interpolation=cv2.INTER_NEAREST)
+    #return cv2.resize(small, src.shape[:2][::-1], interpolation=cv2.INTER_NEAREST)
 
 
 #入力解像度で縮小率を決定
@@ -31,6 +30,18 @@ def scale_down_rate():
         return 1/10**(d-2)
     else:
         return 1
+
+#Lab色空間に変換
+def toLab(img):
+    return img_Lab = cv2.cvtColor(img, cv2.COLOR_BGR2Lab)
+
+#todo色を採取してリストにぶっこむ
+
+
+#todo色差の計算
+
+
+#todo頻度順で画像生成
 
 
 # テスト用の表示
