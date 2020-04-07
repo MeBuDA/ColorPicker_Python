@@ -35,11 +35,9 @@ def scale_down_rate():
 def toLab(img):
     return img_Lab = cv2.cvtColor(img, cv2.COLOR_BGR2Lab)
 
-#todo色を採取してリストにぶっこむ
-
-
-#todo色差の計算
-
+#todo CIE76 色差の計算
+def cie76(img_Lab):
+    
 
 #todo頻度順で画像生成
 
